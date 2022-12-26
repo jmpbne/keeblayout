@@ -1,7 +1,8 @@
 - [x] Parse source layers, skipping empty lines
 - [x] Replace "---" with null
 - [x] Get size of the largest layer
-- [ ] Render keyboards as a table or as a set of nested containers
+- [ ] Combine multiple layers
+- [x] Render keyboards as a table
 - [ ] Get the list of missing keys
 - [ ] Save data to local storage
 - [ ] Load data from local storage (when?)

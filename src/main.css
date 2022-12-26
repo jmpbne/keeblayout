@@ -4,12 +4,16 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
+header h1 {
   text-align: center;
 }
 
-p {
+header p {
   text-align: center;
+}
+
+table td {
+  border: 1px solid #ddd;
 }
 
 textarea {
