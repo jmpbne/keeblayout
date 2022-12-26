@@ -6,10 +6,13 @@ import { parse } from "./core";
 
 const defaultState = `source:
   - |
-    q w e r t --- y u i o p
-    a s d f g h j k l
+    esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 --- prscr scrlk pause
+    grave 1 2 3 4 5 6 7 8 9 0 minus equals bksp insert home pgup
+    tab q w e r t y u i o p lbrack rbrack bslash delete end pgdn
   - |
-    control alt shift z x c v b n m space enter`;
+    caps a s d f g h j k l scolon quote --- enter --- --- ---
+    lshift z x c v b n m comma dot fslash --- --- rshift --- up ---
+    lctrl fn lsuper lalt space --- --- --- --- --- ralt menu rsuper rctrl left down right`;
 
 export default function App() {
   const [state, setState] = useState({
