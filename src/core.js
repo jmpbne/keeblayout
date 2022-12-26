@@ -51,10 +51,12 @@ export function parse(yaml) {
 }
 
 function parseKeyboard(data) {
-  // undefined target
+  // handle undefined target
+
   if (!data) return [null, null];
 
   // convert string into nested array
+
   const layers = data.map((layerData) =>
     layerData
       .split("\n")
@@ -63,6 +65,7 @@ function parseKeyboard(data) {
   );
 
   // get largest dimensions
+
   let width = 0;
   let height = 0;
 
@@ -71,6 +74,20 @@ function parseKeyboard(data) {
 
     for (const row of layer) {
       width = Math.max(width, row.length);
+    }
+  }
+
+  // normalize layer dimensions
+
+  for (const layer of layers) {
+    for (const row of layer) {
+      while (row.length < width) {
+        row.push(null);
+      }
+    }
+
+    while (layer.length < height) {
+      layer.push([...Array(width).fill(null)]);
     }
   }
 
