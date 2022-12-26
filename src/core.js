@@ -39,23 +39,16 @@ export function parse(yaml) {
     return { error: `${first.instancePath} ${first.message}` };
   }
 
-  const [source, sourceSize] = parseKeyboard(data.source);
-  const [target, targetSize] = parseKeyboard(data.target);
-
-  data = {
-    source,
-    sourceSize,
-    target,
-    targetSize,
+  return {
+    source: parseKeyboard(data.source),
+    target: parseKeyboard(data.target),
   };
-
-  return data;
 }
 
 function parseKeyboard(data) {
   // handle undefined target
 
-  if (!data) return [null, null];
+  if (!data) return null;
 
   // convert string into nested array
 
@@ -98,10 +91,11 @@ function parseKeyboard(data) {
     }
   }
 
-  return [layers, [width, height]];
+  return layers;
 }
 
-export function transposeLayers(data) {
-  // TODO: implement
-  return data;
+export function transposeLayers(layers) {
+  return layers[0].map((row, rowIndex) =>
+    row.map((_, colIndex) => layers.map((layer) => layer[rowIndex][colIndex]))
+  );
 }

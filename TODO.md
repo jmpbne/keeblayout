@@ -1,7 +1,7 @@
 - [x] Parse source layers, skipping empty lines
 - [x] Replace "---" with null
 - [x] Get size of the largest layer
-- [ ] Combine multiple layers
+- [x] Combine multiple layers
 - [x] Render keyboards as a table
 - [ ] Get the list of missing keys
 - [ ] Save data to local storage
@@ -9,3 +9,5 @@
 - [ ] Handle custom colors (stored as a YAML dict - named? hex?)
 - [ ] Handle custom labels (stored as a YAML dict)
 - [ ] Parse error messages
+- [ ] Beautify input data (add missing --- and align columns)
+- [ ] Side by side view

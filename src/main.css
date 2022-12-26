@@ -2,6 +2,7 @@ body {
   background-color: #222;
   color: #ddd;
   font-family: sans-serif;
+  font-size: 14px;
 }
 
 header h1 {
@@ -13,15 +14,22 @@ header p {
 }
 
 table td {
-  border: 1px solid #ddd;
+  background-color: #444;
+  padding: 0.25rem;
+  font-family: monospace;
+  font-size: 12px;
+  text-align: center;
+  width: 4em;
 }
 
 textarea {
   appearance: none;
   background-color: #222;
-  border: 1px solid #ddd;
+  border: 1px solid #777;
   box-sizing: border-box;
   color: #ddd;
-  height: 20em;
+  height: 20rem;
+  padding: 0.25rem;
+  resize: none;
   width: 100%;
 }

@@ -8,6 +8,7 @@ const defaultState = `source:
   - |
     q w e r t --- y u i o p
     a s d f g h j k l
+  - |
     control alt shift z x c v b n m space enter`;
 
 export default function App() {
@@ -42,7 +43,6 @@ export default function App() {
           onChange={(e) => updateState(e.target.value)}
           spellCheck={false}
         ></textarea>
-        <code>{JSON.stringify(state.result, null, 2)}</code>
         {state.result.source && (
           <>
             <p>Source:</p>

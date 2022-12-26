@@ -6,12 +6,12 @@ export default function Keyboard({ layers }) {
   return (
     <table>
       <tbody>
-        {transposedData.map((row, rowID) => (
-          <tr key={rowID}>
-            {row.map((column, columnID) => (
-              <td key={columnID}>
-                {column.map((key, keyID) => (
-                  <div key={keyID}>{key}</div>
+        {transposedData.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((column, colIndex) => (
+              <td key={colIndex}>
+                {column.map((key, layerIndex) => (
+                  <div key={layerIndex}>{key || <>&nbsp;</>}</div>
                 ))}
               </td>
             ))}
