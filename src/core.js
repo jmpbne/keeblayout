@@ -51,15 +51,28 @@ export function parse(yaml) {
 }
 
 function parseKeyboard(data) {
+  // undefined target
   if (!data) return [null, null];
 
+  // convert string into nested array
   const layers = data.map((layerData) =>
     layerData
       .split("\n")
       .filter((rowData) => rowData)
       .map((rowData) => rowData.trim().split(/\s+/))
   );
-  console.log(layers);
 
-  return [layers, null];
+  // get largest dimensions
+  let width = 0;
+  let height = 0;
+
+  for (const layer of layers) {
+    height = Math.max(height, layer.length);
+
+    for (const row of layer) {
+      width = Math.max(width, row.length);
+    }
+  }
+
+  return [layers, [width, height]];
 }
