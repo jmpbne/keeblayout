@@ -3,3 +3,21 @@ body {
   color: #ddd;
   font-family: sans-serif;
 }
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+textarea {
+  appearance: none;
+  background-color: #222;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  color: #ddd;
+  height: 20em;
+  width: 100%;
+}
