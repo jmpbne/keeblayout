@@ -5,10 +5,10 @@
 - [x] Render keyboards as a table
 - [x] Get the list of missing keys
 - [x] Use different style for empty keys
-- [ ] Save data to local storage
-- [ ] Load data from local storage (when?)
+- [x] Parse error messages
 - [ ] Handle custom colors (stored as a YAML dict - named? hex?)
 - [ ] Handle custom labels (stored as a YAML dict)
-- [ ] Parse error messages
+- [ ] Save data to local storage
+- [ ] Load data from local storage (when?)
 - [ ] Beautify input data (add missing --- and align columns)
 - [ ] Side by side view

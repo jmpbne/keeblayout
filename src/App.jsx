@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import KeyboardError from "./KeyboardError";
 import KeyboardMissing from "./KeyboardMissing";
 import KeyboardView from "./KeyboardView";
 
@@ -55,6 +56,7 @@ export default function App() {
           onChange={(e) => updateState(e.target.value)}
           spellCheck={false}
         ></textarea>
+        <KeyboardError message={state.result.error} />
         <KeyboardMissing keys={state.result.missing} />
         <KeyboardView
           source={state.result.source}
