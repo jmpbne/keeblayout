@@ -24,18 +24,42 @@ const schema = {
 
 export function parse(yaml) {
   const validate = new Ajv().compile(schema);
-  let json;
+  let data;
 
   try {
-    json = load(yaml);
+    data = load(yaml);
   } catch (e) {
     return { error: e.reason };
   }
 
-  if (!validate(json)) {
+  if (!validate(data)) {
     const first = validate.errors[0];
     return { error: `${first.instancePath} ${first.message}` };
   }
 
-  return json;
+  const [source, sourceSize] = parseKeyboard(data.source);
+  const [target, targetSize] = parseKeyboard(data.target);
+
+  data = {
+    source,
+    sourceSize,
+    target,
+    targetSize,
+  };
+
+  return data;
+}
+
+function parseKeyboard(data) {
+  if (!data) return [null, null];
+
+  const layers = data.map((layerData) =>
+    layerData
+      .split("\n")
+      .filter((rowData) => rowData)
+      .map((rowData) => rowData.trim().split(/\s+/))
+  );
+  console.log(layers);
+
+  return [layers, null];
 }

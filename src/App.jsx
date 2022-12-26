@@ -5,8 +5,8 @@ import { parse } from "./core";
 const defaultState = `source:
   - |
     q w e r t y u i o p
-    a s d f g h j k l backspace
-    shift z x c v b n m space enter`;
+    a s d f g h j k l
+    control alt shift z x c v b n m space enter`;
 
 export default function App() {
   const [state, setState] = useState({
@@ -37,7 +37,7 @@ export default function App() {
         onChange={(e) => updateState(e.target.value)}
         spellCheck={false}
       ></textarea>
-      <pre>{JSON.stringify(state.result, null, 2)}</pre>
+      <code>{JSON.stringify(state.result, null, 2)}</code>
     </>
   );
 }

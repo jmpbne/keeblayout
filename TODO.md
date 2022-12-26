@@ -1,0 +1,11 @@
+- [x] Parse source layers, skipping empty lines
+- [ ] Replace "---" with undefined
+- [ ] Get size of the largest layer
+- [ ] Render keyboard as a table or as a set of nested containers
+- [ ] Parse and render target data as well
+- [ ] Get the list of missing keys
+- [ ] Save data to local storage
+- [ ] Load data from local storage (when?)
+- [ ] Handle custom colors (stored as a YAML dict - named? hex?)
+- [ ] Handle custom labels (stored as a YAML dict)
+- [ ] Parse error messages
