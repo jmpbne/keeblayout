@@ -24,12 +24,17 @@ const schema = {
 
 export function parse(yaml) {
   const validate = new Ajv().compile(schema);
+  let json;
 
-  const json = load(yaml);
-  const valid = validate(json);
+  try {
+    json = load(yaml);
+  } catch (e) {
+    return { error: e.reason };
+  }
 
-  if (!valid) {
-    return { errors: validate.errors };
+  if (!validate(json)) {
+    const first = validate.errors[0];
+    return { error: `${first.instancePath} ${first.message}` };
   }
 
   return json;
