@@ -4,7 +4,7 @@ import { parse } from "./core";
 
 const defaultState = `source:
   - |
-    q w e r t y u i o p
+    q w e r t --- y u i o p
     a s d f g h j k l
   - |
     control alt shift z x c v b n m space enter`;

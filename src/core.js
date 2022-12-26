@@ -1,7 +1,7 @@
 import Ajv from "ajv";
 import { load } from "js-yaml";
 
-const schema = {
+const SCHEMA = {
   type: "object",
   properties: {
     source: {
@@ -22,8 +22,10 @@ const schema = {
   required: ["source"], // target is optional on purpose
 };
 
+const EMPTY = "---";
+
 export function parse(yaml) {
-  const validate = new Ajv().compile(schema);
+  const validate = new Ajv().compile(SCHEMA);
   let data;
 
   try {
@@ -61,7 +63,12 @@ function parseKeyboard(data) {
     layerData
       .split("\n")
       .filter((rowData) => rowData)
-      .map((rowData) => rowData.trim().split(/\s+/))
+      .map((rowData) =>
+        rowData
+          .trim()
+          .split(/\s+/)
+          .map((key) => (key !== EMPTY ? key : null))
+      )
   );
 
   // get largest dimensions
