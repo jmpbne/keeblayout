@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Keyboard from "./Keyboard";
+import KeyboardMissing from "./KeyboardMissing";
+import KeyboardView from "./KeyboardView";
 
 import { parse } from "./core";
 
@@ -54,19 +55,11 @@ export default function App() {
           onChange={(e) => updateState(e.target.value)}
           spellCheck={false}
         ></textarea>
-        {state.result.source && (
-          <>
-            <p>Source:</p>
-            <Keyboard layers={state.result.source} />
-          </>
-        )}
-        {state.result.target && (
-          <>
-            <p>Target:</p>
-            <Keyboard layers={state.result.target} />
-          </>
-        )}
-        <p>Missing: {state.result._missing.join(", ")}</p>
+        <KeyboardMissing keys={state.result.missing} />
+        <KeyboardView
+          source={state.result.source}
+          target={state.result.target}
+        />
       </main>
     </>
   );

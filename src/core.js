@@ -46,7 +46,7 @@ export function parse(yaml) {
   return {
     source,
     target,
-    _missing: missing,
+    missing,
   };
 }
 
@@ -100,6 +100,10 @@ function parseKeyboard(data) {
 }
 
 function getMissingKeys(sourceLayers, targetLayers) {
+  if (!targetLayers) {
+    return [];
+  }
+
   const source = new Set(sourceLayers.flat(2).filter((k) => k));
   const target = new Set(targetLayers.flat(2).filter((k) => k));
   const missing = [];
