@@ -18,6 +18,12 @@ const SCHEMA = {
       },
       minItems: 1,
     },
+    labels: {
+      type: "object",
+      additionalProperties: {
+        type: "string",
+      },
+    },
   },
   required: ["source"], // target is optional on purpose
 };
@@ -46,6 +52,7 @@ export function parse(yaml) {
   return {
     source,
     target,
+    labels: data.labels,
     missing,
   };
 }

@@ -7,7 +7,7 @@
 - [x] Use different style for empty keys
 - [x] Parse error messages
 - [ ] Handle custom colors (stored as a YAML dict - named? hex?)
-- [ ] Handle custom labels (stored as a YAML dict)
+- [x] Handle custom labels (stored as a YAML dict)
 - [ ] Save data to local storage
 - [ ] Load data from local storage (when?)
 - [ ] Beautify input data (add missing --- and align columns)

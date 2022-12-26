@@ -22,7 +22,12 @@ target:
   - |
     1 2 3 4 5 6 7 8 9 0
     f1 f2 f3 f4 f5 f6 f7 f8 f9
-    --- up left right down --- f10 f11 f12`;
+    --- up left right down --- f10 f11 f12
+labels:
+  up: "↑"
+  left: "←"
+  right: "→"
+  down: "↓"`;
 
 export default function App() {
   const [state, setState] = useState({
@@ -61,6 +66,7 @@ export default function App() {
         <KeyboardView
           source={state.result.source}
           target={state.result.target}
+          labels={state.result.labels}
         />
       </main>
     </>

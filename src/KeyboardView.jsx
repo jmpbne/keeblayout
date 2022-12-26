@@ -1,13 +1,13 @@
 import Keyboard from "./Keyboard";
 
-export default function KeyboardView({ source, target }) {
+export default function KeyboardView({ source, target, labels }) {
   if (target) {
     return (
       <>
         <p>
           <strong>Keyboard:</strong>
         </p>
-        <Keyboard layers={target} />
+        <Keyboard layers={target} labels={labels} />
       </>
     );
   }
@@ -19,7 +19,7 @@ export default function KeyboardView({ source, target }) {
           Source keyboard (will be shown unless you define valid target
           keyboard):
         </p>
-        <Keyboard layers={source} />
+        <Keyboard layers={source} labels={labels} />
       </>
     );
   }

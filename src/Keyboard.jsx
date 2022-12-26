@@ -1,6 +1,6 @@
 import { transposeLayers } from "./core";
 
-export default function Keyboard({ layers }) {
+export default function Keyboard({ layers, labels }) {
   const transposedData = transposeLayers(layers);
 
   return (
@@ -12,7 +12,9 @@ export default function Keyboard({ layers }) {
               <td key={colIndex}>
                 {column.some((k) => k) &&
                   column.map((key, layerIndex) => (
-                    <div key={layerIndex}>{key || <>&nbsp;</>}</div>
+                    <div key={layerIndex}>
+                      {labels[key] || key || <>&nbsp;</>}
+                    </div>
                   ))}
               </td>
             ))}
