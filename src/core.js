@@ -39,9 +39,14 @@ export function parse(yaml) {
     return { error: `${first.instancePath} ${first.message}` };
   }
 
+  const source = parseKeyboard(data.source);
+  const target = parseKeyboard(data.target);
+  const missing = getMissingKeys(source, target);
+
   return {
-    source: parseKeyboard(data.source),
-    target: parseKeyboard(data.target),
+    source,
+    target,
+    _missing: missing,
   };
 }
 
@@ -92,6 +97,21 @@ function parseKeyboard(data) {
   }
 
   return layers;
+}
+
+function getMissingKeys(sourceLayers, targetLayers) {
+  const source = new Set(sourceLayers.flat(2).filter((k) => k));
+  const target = new Set(targetLayers.flat(2).filter((k) => k));
+  const missing = [];
+
+  for (const k of source) {
+    if (!target.has(k)) {
+      missing.push(k);
+    }
+  }
+
+  missing.sort();
+  return missing;
 }
 
 export function transposeLayers(layers) {

@@ -3,7 +3,8 @@
 - [x] Get size of the largest layer
 - [x] Combine multiple layers
 - [x] Render keyboards as a table
-- [ ] Get the list of missing keys
+- [x] Get the list of missing keys
+- [ ] Use different style for empty keys
 - [ ] Save data to local storage
 - [ ] Load data from local storage (when?)
 - [ ] Handle custom colors (stored as a YAML dict - named? hex?)
