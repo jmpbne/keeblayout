@@ -4,7 +4,7 @@
 - [x] Combine multiple layers
 - [x] Render keyboards as a table
 - [x] Get the list of missing keys
-- [ ] Use different style for empty keys
+- [x] Use different style for empty keys
 - [ ] Save data to local storage
 - [ ] Load data from local storage (when?)
 - [ ] Handle custom colors (stored as a YAML dict - named? hex?)

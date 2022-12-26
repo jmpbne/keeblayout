@@ -10,9 +10,10 @@ export default function Keyboard({ layers }) {
           <tr key={rowIndex}>
             {row.map((column, colIndex) => (
               <td key={colIndex}>
-                {column.map((key, layerIndex) => (
-                  <div key={layerIndex}>{key || <>&nbsp;</>}</div>
-                ))}
+                {column.some((k) => k) &&
+                  column.map((key, layerIndex) => (
+                    <div key={layerIndex}>{key || <>&nbsp;</>}</div>
+                  ))}
               </td>
             ))}
           </tr>

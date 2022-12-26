@@ -6,12 +6,16 @@ body {
 }
 
 table td {
-  background-color: #444;
+  border: 1px solid #444;
   padding: 0.25rem;
   font-family: monospace;
   font-size: 12px;
   text-align: center;
   width: 4em;
+}
+
+table td:not(:empty) {
+  background-color: #444;
 }
 
 textarea {
@@ -20,8 +24,8 @@ textarea {
   border: 1px solid #777;
   box-sizing: border-box;
   color: #ddd;
-  height: 12rem;
+  height: 15rem;
   padding: 0.25rem;
-  resize: none;
+  resize: vertical;
   width: 100%;
 }
