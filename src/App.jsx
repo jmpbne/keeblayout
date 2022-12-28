@@ -13,16 +13,20 @@ export default function App() {
     result: {},
   });
 
-  const updateState = useDebouncedCallback((data) => {
-    saveToStorage(data);
+  const updateStateCore = function (data) {
     setState({
       raw: data,
       result: parse(data),
     });
+  };
+
+  const updateState = useDebouncedCallback((data) => {
+    saveToStorage(data);
+    updateStateCore(data);
   }, 1000);
 
   useEffect(() => {
-    updateState(loadFromStorage());
+    updateStateCore(loadFromStorage());
   }, []);
 
   return (
