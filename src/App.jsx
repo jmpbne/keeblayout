@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 import KeyboardError from "./KeyboardError";
 import KeyboardMissing from "./KeyboardMissing";
@@ -35,12 +36,12 @@ export default function App() {
     result: {},
   });
 
-  function updateState(data) {
+  const updateState = useDebouncedCallback((data) => {
     setState({
       raw: data,
       result: parse(data),
     });
-  }
+  }, 1000);
 
   useEffect(() => {
     updateState(defaultState);
