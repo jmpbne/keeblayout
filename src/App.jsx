@@ -5,30 +5,7 @@ import KeyboardError from "./KeyboardError";
 import KeyboardMissing from "./KeyboardMissing";
 import KeyboardView from "./KeyboardView";
 
-import { parse } from "./core";
-
-const defaultState = `source:
-  - |
-    esc f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 --- prscr scrlk pause
-    grave 1 2 3 4 5 6 7 8 9 0 minus equals bksp insert home pgup
-    tab q w e r t y u i o p lbrack rbrack bslash delete end pgdn
-    caps a s d f g h j k l scolon quote --- enter
-    lshift z x c v b n m comma dot fslash --- --- rshift --- up
-    lctrl fn lsuper lalt space --- --- --- --- --- ralt menu rsuper rctrl left down right
-target:
-  - |
-    q w e r t y u i o p
-    a s d f g h j k l bksp
-    lshift z x c v space b n m enter
-  - |
-    1 2 3 4 5 6 7 8 9 0
-    f1 f2 f3 f4 f5 f6 f7 f8 f9
-    --- up left right down --- f10 f11 f12
-labels:
-  up: "↑"
-  left: "←"
-  right: "→"
-  down: "↓"`;
+import { loadFromStorage, parse, saveToStorage } from "./core";
 
 export default function App() {
   const [state, setState] = useState({
@@ -37,6 +14,7 @@ export default function App() {
   });
 
   const updateState = useDebouncedCallback((data) => {
+    saveToStorage(data);
     setState({
       raw: data,
       result: parse(data),
@@ -44,7 +22,7 @@ export default function App() {
   }, 1000);
 
   useEffect(() => {
-    updateState(defaultState);
+    updateState(loadFromStorage());
   }, []);
 
   return (
@@ -54,6 +32,10 @@ export default function App() {
         <p>
           Enter a valid YAML describing both source and target keyboard (one
           multiline string for each layer). It will be rendered automatically.
+        </p>
+        <p>
+          Changes are saved automatically, unless your browser can't put data to
+          local storage.
         </p>
       </header>
       <main>

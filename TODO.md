@@ -6,9 +6,7 @@
 - [x] Get the list of missing keys
 - [x] Use different style for empty keys
 - [x] Parse error messages
-- [ ] Handle custom colors (stored as a YAML dict - named? hex?)
-- [x] Handle custom labels (stored as a YAML dict)
-- [ ] Save data to local storage
-- [ ] Load data from local storage (when?)
+- [x] Handle custom labels
+- [x] Save data to local storage
+- [x] Load data from local storage
 - [ ] Beautify input data (add missing --- and align columns)
-- [ ] Side by side view
