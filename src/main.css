@@ -1,36 +1,67 @@
+:root {
+  --font-monospace: 12px monospace;
+  --font-sans-serif: 14px sans-serif;
+
+  --padding: 0.5rem;
+
+  --bg-color: #222;
+  --bg-color-secondary: #444;
+  --border-color: #777;
+  --fg-color: #ddd;
+  --fg-color-error: #f00;
+}
+
 body {
-  background-color: #222;
-  color: #ddd;
-  font-family: sans-serif;
-  font-size: 14px;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  font: var(--font-sans-serif);
+}
+
+code {
+  font: var(--font-monospace);
+}
+
+header {
+  padding: var(--padding);
+  text-align: center;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--bg-color-secondary);
+  margin: 1rem;
+}
+
+main {
+  padding: var(--padding);
 }
 
 table td {
-  border: 1px solid #444;
+  border: 1px solid var(--bg-color-secondary);
   padding: 0.25rem;
-  font-family: monospace;
-  font-size: 12px;
+  font: var(--font-monospace);
   text-align: center;
-  width: 4em;
+  width: 3.5rem;
 }
 
 table td:not(:empty) {
-  background-color: #444;
+  background-color: var(--bg-color-secondary);
 }
 
 textarea {
   appearance: none;
-  background-color: #222;
-  border: 1px solid #777;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
   box-sizing: border-box;
-  color: #ddd;
+  color: var(--fg-color);
+  font: var(--font-monospace);
   height: 15rem;
-  padding: 0.25rem;
+  padding: var(--padding);
   resize: vertical;
   width: 100%;
 }
 
 .error {
-  color: #f00;
+  color: var(--fg-color-error);
   font-weight: bold;
 }

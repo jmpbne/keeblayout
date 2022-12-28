@@ -1,3 +1,12 @@
 export default function KeyboardMissing({ keys }) {
-  return keys && keys.length > 0 ? <p>Missing: {keys.join(", ")}</p> : <></>;
+  if (!(keys && keys.length > 0)) return null;
+
+  return (
+    <>
+      <h3>Missing</h3>
+      <p>
+        <code>{keys.join(", ")}</code>
+      </p>
+    </>
+  );
 }

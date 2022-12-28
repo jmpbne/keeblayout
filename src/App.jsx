@@ -42,6 +42,7 @@ export default function App() {
           local storage.
         </p>
       </header>
+      <hr />
       <main>
         <textarea
           defaultValue={state.raw}

@@ -4,9 +4,7 @@ export default function KeyboardView({ source, target, labels }) {
   if (target) {
     return (
       <>
-        <p>
-          <strong>Keyboard:</strong>
-        </p>
+        <h3>Target keyboard</h3>
         <Keyboard layers={target} labels={labels} />
       </>
     );
@@ -15,10 +13,8 @@ export default function KeyboardView({ source, target, labels }) {
   if (source) {
     return (
       <>
-        <p>
-          Source keyboard (will be shown unless you define valid target
-          keyboard):
-        </p>
+        <h3>Source keyboard</h3>
+        <p>(will be shown unless you define valid target keyboard)</p>
         <Keyboard layers={source} labels={labels} />
       </>
     );
