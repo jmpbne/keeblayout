@@ -77,7 +77,7 @@ export function parse(yaml) {
   return {
     source,
     target,
-    labels: data.labels,
+    labels: data.labels || {},
     missing,
   };
 }
