@@ -3,6 +3,7 @@ import { useDebouncedCallback } from "use-debounce";
 
 import KeyboardError from "./KeyboardError";
 import KeyboardMissing from "./KeyboardMissing";
+import KeyboardSample from "./KeyboardSample"
 import KeyboardView from "./KeyboardView";
 
 import { loadFromStorage, parse, saveToStorage } from "./core";
@@ -49,6 +50,7 @@ export default function App() {
           onChange={(e) => updateState(e.target.value)}
           spellCheck={false}
         ></textarea>
+        <KeyboardSample />
         <KeyboardError message={state.result.error} />
         <KeyboardMissing keys={state.result.missing} />
         <KeyboardView

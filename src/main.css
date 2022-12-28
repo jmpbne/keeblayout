@@ -6,8 +6,8 @@
 
   --bg-color: #222;
   --bg-color-secondary: #444;
-  --border-color: #777;
   --fg-color: #ddd;
+  --fg-color-secondary: #777;
   --fg-color-error: #f00;
 }
 
@@ -19,6 +19,10 @@ body {
 
 code {
   font: var(--font-monospace);
+}
+
+details {
+  padding-top: var(--padding);
 }
 
 header {
@@ -51,7 +55,7 @@ table td:not(:empty) {
 textarea {
   appearance: none;
   background-color: var(--bg-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--fg-color-secondary);
   box-sizing: border-box;
   color: var(--fg-color);
   font: var(--font-monospace);
@@ -59,6 +63,10 @@ textarea {
   padding: var(--padding);
   resize: vertical;
   width: 100%;
+}
+
+textarea:read-only {
+  color: var(--fg-color-secondary);
 }
 
 .error {
