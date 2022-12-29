@@ -48,7 +48,9 @@ export default function KeyboardSample() {
   return (
     <details>
       <summary>Sample data</summary>
-      <textarea value={DEFAULT_DATA} readOnly></textarea>
+      <div>
+        <textarea value={DEFAULT_DATA} readOnly></textarea>
+      </div>
     </details>
   );
 }

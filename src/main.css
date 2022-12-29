@@ -2,7 +2,9 @@
   --font-monospace: 12px monospace;
   --font-sans-serif: 14px sans-serif;
 
+  --padding-small: 0.25rem;
   --padding: 0.5rem;
+  --padding-large: 1rem;
 
   --bg-color: #222;
   --bg-color-secondary: #444;
@@ -21,19 +23,15 @@ code {
   font: var(--font-monospace);
 }
 
-details {
-  padding-top: var(--padding);
+details summary {
+  font-size: 16px;
+  font-weight: bold;
+  padding: var(--padding-large) 0 var(--padding);
 }
 
 header {
   padding: var(--padding);
   text-align: center;
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid var(--bg-color-secondary);
-  margin: 1rem;
 }
 
 main {
@@ -42,7 +40,7 @@ main {
 
 table td {
   border: 1px solid var(--bg-color-secondary);
-  padding: 0.25rem;
+  padding: var(--padding-small);
   font: var(--font-monospace);
   text-align: center;
   width: 3.5rem;

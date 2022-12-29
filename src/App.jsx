@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
+import Keyboard from "./Keyboard";
 import KeyboardError from "./KeyboardError";
 import KeyboardMissing from "./KeyboardMissing";
-import KeyboardSample from "./KeyboardSample"
-import KeyboardView from "./KeyboardView";
+import KeyboardSample from "./KeyboardSample";
 
 import { loadFromStorage, parse, saveToStorage } from "./core";
 
@@ -43,7 +43,6 @@ export default function App() {
           local storage.
         </p>
       </header>
-      <hr />
       <main>
         <textarea
           defaultValue={state.raw}
@@ -53,9 +52,14 @@ export default function App() {
         <KeyboardSample />
         <KeyboardError message={state.result.error} />
         <KeyboardMissing keys={state.result.missing} />
-        <KeyboardView
-          source={state.result.source}
-          target={state.result.target}
+        <Keyboard
+          title="Source"
+          layers={state.result.source}
+          labels={state.result.labels}
+        />
+        <Keyboard
+          title="Target"
+          layers={state.result.target}
           labels={state.result.labels}
         />
       </main>
