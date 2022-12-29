@@ -9,4 +9,4 @@
 - [x] Handle custom labels
 - [x] Save data to local storage
 - [x] Load data from local storage
-- [ ] Beautify input data (add missing --- and align columns)
+- [x] Beautify input data
