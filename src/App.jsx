@@ -41,7 +41,7 @@ export default function App() {
         <p>
           by @jmpbne &middot;{" "}
           <a href="https://github.com/jmpbne/keeblayout" target="_blank">
-            GitHub
+            GitHub (introduction and source code)
           </a>
         </p>
         <p>&nbsp;</p>
