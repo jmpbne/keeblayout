@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
-import Keyboard from "./Keyboard";
-import KeyboardError from "./KeyboardError";
-import KeyboardMissing from "./KeyboardMissing";
-import KeyboardSample from "./KeyboardSample";
+import Keyboard from "./components/Keyboard";
+import KeyboardError from "./components/KeyboardError";
+import KeyboardMissing from "./components/KeyboardMissing";
+import KeyboardSample from "./components/KeyboardSample";
 
-import { loadFromStorage, parse, saveToStorage } from "./core";
+import { parse } from "./core/parse";
+import { load, save } from "./core/storage";
 
 export default function App() {
   const [state, setState] = useState({
@@ -22,12 +23,12 @@ export default function App() {
   };
 
   const updateState = useDebouncedCallback((data) => {
-    saveToStorage(data);
+    save(data);
     updateStateCore(data);
   }, 1000);
 
   useEffect(() => {
-    updateStateCore(loadFromStorage());
+    updateStateCore(load());
   }, []);
 
   return (

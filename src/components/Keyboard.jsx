@@ -1,4 +1,4 @@
-import { transposeLayers } from "./core";
+import { transposeLayers } from "../core/utils";
 
 export default function Keyboard({ title, layers, labels }) {
   if (!layers) return null;

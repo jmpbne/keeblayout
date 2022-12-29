@@ -1,4 +1,31 @@
-const DEFAULT_DATA = `source:
+export const SCHEMA = {
+  type: "object",
+  properties: {
+    source: {
+      type: "array",
+      items: {
+        type: "string",
+      },
+      minItems: 1,
+    },
+    target: {
+      type: "array",
+      items: {
+        type: "string",
+      },
+      minItems: 1,
+    },
+    labels: {
+      type: "object",
+      additionalProperties: {
+        type: "string",
+      },
+    },
+  },
+  required: ["source"], // target and labels are optional on purpose
+};
+
+export const DEFAULT_DATA = `source:
 - |
   esc    f1 f2     f3   f4    f5  f6  f7  f8    f9  f10    f11    f12    ---    prscr  scrlk pause
   grave  1  2      3    4     5   6   7   8     9   0      minus  equals bksp   insert home  pgup
@@ -43,14 +70,3 @@ labels:
   left: "←"
   down: "↓"
   right: "→"`;
-
-export default function KeyboardSample() {
-  return (
-    <details>
-      <summary>Sample data</summary>
-      <div>
-        <textarea value={DEFAULT_DATA} readOnly></textarea>
-      </div>
-    </details>
-  );
-}

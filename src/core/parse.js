@@ -1,36 +1,9 @@
 import Ajv from "ajv";
 import { load } from "js-yaml";
 
-const SCHEMA = {
-  type: "object",
-  properties: {
-    source: {
-      type: "array",
-      items: {
-        type: "string",
-      },
-      minItems: 1,
-    },
-    target: {
-      type: "array",
-      items: {
-        type: "string",
-      },
-      minItems: 1,
-    },
-    labels: {
-      type: "object",
-      additionalProperties: {
-        type: "string",
-      },
-    },
-  },
-  required: ["source"], // target is optional on purpose
-};
+import { SCHEMA } from "./data";
 
 const EMPTY = "---";
-
-const LOCAL_STORAGE_KEY = "keeblayoutData";
 
 export function parse(yaml) {
   const validate = new Ajv().compile(SCHEMA);
@@ -125,18 +98,4 @@ function getMissingKeys(sourceLayers, targetLayers) {
 
   missing.sort();
   return missing;
-}
-
-export function transposeLayers(layers) {
-  return layers[0].map((row, rowIndex) =>
-    row.map((_, colIndex) => layers.map((layer) => layer[rowIndex][colIndex]))
-  );
-}
-
-export function loadFromStorage() {
-  return localStorage.getItem(LOCAL_STORAGE_KEY) || "";
-}
-
-export function saveToStorage(data) {
-  localStorage.setItem(LOCAL_STORAGE_KEY, data);
 }
