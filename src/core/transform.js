@@ -1,5 +1,6 @@
 import Ajv from "ajv";
-import { load } from "js-yaml";
+import { getBorderCharacters, table } from "table";
+import { parse as load, stringify as dump } from "yaml";
 
 import { SCHEMA } from "./data";
 
@@ -12,7 +13,7 @@ export function parse(yaml) {
   try {
     data = load(yaml);
   } catch (e) {
-    return { error: e.reason };
+    return { error: e.message };
   }
 
   if (!validate(data)) {
@@ -78,6 +79,8 @@ function parseKeyboard(data) {
     }
   }
 
+  if (layers.length == 0 || layers[0].length == 0) return null;
+
   return layers;
 }
 
@@ -90,12 +93,42 @@ function getMissingKeys(sourceLayers, targetLayers) {
   const target = new Set(targetLayers.flat(2).filter((k) => k));
   const missing = [];
 
-  for (const k of source) {
-    if (!target.has(k)) {
-      missing.push(k);
+  for (const key of source) {
+    if (!target.has(key)) {
+      missing.push(key);
     }
   }
 
   missing.sort();
   return missing;
+}
+
+export function stringify(obj) {
+  const data = {};
+
+  if (obj.source) {
+    data.source = obj.source.map((layer) => stringifyLayer(layer));
+  }
+  if (obj.target) {
+    data.target = obj.target.map((layer) => stringifyLayer(layer));
+  }
+  if (obj.labels) {
+    data.labels = obj.labels;
+  }
+
+  return dump(data, null, { lineWidth: -1 });
+}
+
+function stringifyLayer(layer) {
+  const singleTypeArray = layer.map((row) => row.map((col) => col || EMPTY));
+
+  const layerString = table(singleTypeArray, {
+    border: getBorderCharacters("void"),
+    columnDefault: {
+      paddingLeft: 0,
+    },
+    drawHorizontalLine: () => false,
+  });
+
+  return layerString;
 }

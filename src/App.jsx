@@ -6,29 +6,32 @@ import KeyboardError from "./components/KeyboardError";
 import KeyboardMissing from "./components/KeyboardMissing";
 import KeyboardSample from "./components/KeyboardSample";
 
-import { parse } from "./core/parse";
 import { load, save } from "./core/storage";
+import { parse, stringify } from "./core/transform";
 
 export default function App() {
-  const [state, setState] = useState({
-    raw: "",
-    result: {},
-  });
+  const [data, setData] = useState("");
+  const [state, setState] = useState({});
 
-  const updateStateCore = function (data) {
-    setState({
-      raw: data,
-      result: parse(data),
-    });
+  const updateStateDebounced = useDebouncedCallback((data) => {
+    save(data);
+    setState(parse(data));
+  }, 500);
+
+  const handleInputOnChange = (e) => {
+    setData(e.target.value);
+    updateStateDebounced(e.target.value);
   };
 
-  const updateState = useDebouncedCallback((data) => {
-    save(data);
-    updateStateCore(data);
-  }, 1000);
+  const handleBeautifyButtonOnClick = (e) => {
+    if (state.source) setData(stringify(state));
+  };
 
   useEffect(() => {
-    updateStateCore(load());
+    const data = load();
+
+    setData(data);
+    setState(parse(data));
   }, []);
 
   return (
@@ -46,23 +49,19 @@ export default function App() {
       </header>
       <main>
         <textarea
-          defaultValue={state.raw}
-          onChange={(e) => updateState(e.target.value)}
+          onChange={handleInputOnChange}
           spellCheck={false}
+          value={data}
         ></textarea>
+        <p>
+          <button onClick={handleBeautifyButtonOnClick}>Beautify</button> (will
+          remove any reduntant data)
+        </p>
         <KeyboardSample />
-        <KeyboardError message={state.result.error} />
-        <KeyboardMissing keys={state.result.missing} />
-        <Keyboard
-          title="Source"
-          layers={state.result.source}
-          labels={state.result.labels}
-        />
-        <Keyboard
-          title="Target"
-          layers={state.result.target}
-          labels={state.result.labels}
-        />
+        <KeyboardError message={state.error} />
+        <KeyboardMissing keys={state.missing} />
+        <Keyboard title="Source" layers={state.source} labels={state.labels} />
+        <Keyboard title="Target" layers={state.target} labels={state.labels} />
       </main>
     </>
   );

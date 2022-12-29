@@ -19,6 +19,24 @@ body {
   font: var(--font-sans-serif);
 }
 
+button {
+  appearance: none;
+  background-color: var(--bg-color);
+  border: 1px solid var(--fg-color-secondary);
+  color: var(--fg-color);
+  font: var(--font-sans-serif);
+  padding: var(--padding);
+}
+
+button:hover {
+  background-color: var(--bg-color-secondary);
+}
+
+button:active {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+}
+
 code {
   font: var(--font-monospace);
 }
