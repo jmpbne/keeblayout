@@ -11,6 +11,12 @@
   --fg-color: #ddd;
   --fg-color-secondary: #777;
   --fg-color-error: #f00;
+  --fg-color-link: #dd0;
+}
+
+a {
+  color: var(--fg-color-link);
+  text-decoration: none;
 }
 
 body {

@@ -39,12 +39,19 @@ export default function App() {
       <header>
         <h1>Yet Another Keyboard Layout Designer</h1>
         <p>
-          Enter a valid YAML describing both source and target keyboard (one
-          multiline string for each layer). It will be rendered automatically.
+          by @jmpbne &middot;{" "}
+          <a href="https://github.com/jmpbne/keeblayout" target="_blank">
+            GitHub
+          </a>
+        </p>
+        <p>&nbsp;</p>
+        <p>
+          Click the "Sample data" button to get a glimpse of how to use this
+          app.
         </p>
         <p>
-          Changes are saved automatically, unless your browser can't put data to
-          local storage.
+          Changes are saved automatically to local storage, unless you're in
+          incognito mode.
         </p>
       </header>
       <main>
